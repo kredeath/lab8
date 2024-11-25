@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблиця даних</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Дані з REST API</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Ім'я</th>
+                <th>Електронна пошта</th>
+                <th>Інші дані</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($data as $item) {
+                echo "<tr>";
+                echo "<td>" . htmlspecialchars($item['name']) . "</td>";
+                echo "<td>" . htmlspecialchars($item['email']) . "</td>";
+                echo "<td>" . htmlspecialchars(json_encode($item['additional_data'])) . "</td>";
+                echo "</tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</body>
+</html>
